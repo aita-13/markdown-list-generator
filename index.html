@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown List Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+  <div class="wrapper">
+
+    <h1>Markdown List Generator</h1>
+    
+    <div id="setting">
+      <table>
+        <tbody>
+          <tr>
+            <th>List Type</th>
+            <td>
+              <select id="settingList">
+                <option value="unordered">- Unordered list</option>
+                <option value="ordered">1. Ordered list</option>
+                <option value="task">- [ ] Task List</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Numer of List</th>
+            <td><input type="number" id="settingNumber" value="10" min="0" max="100"></td>
+          </tr>
+          <tr id="hiddenElement">
+            <th>Have number</th>
+            <td>
+              <select id="settingHaveNumber" disabled="disabled">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+    <div id="result">
+      <div id="resultContent">
+        Markdown Text
+      </div>
+    </div>
+
+    <div id="copyButton">
+      <span class="text" id="copyText">COPY</span>
+      <span class="material-symbols-outlined icon" id="copyIcon">content_copy</span>
+    </div>
+
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>

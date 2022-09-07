@@ -1,0 +1,172 @@
+@font-face {
+  font-family: "RictyDiminished";
+  src: url("../font/RictyDiminished-Regular.ttf") format("truetype");
+}
+
+:root {
+  --text-color: #414664;
+  --color1: #3EBAD0;
+  --color2: #FBDE71;
+  --color3: #F4F4F2;
+  --color4: hsl(231, 21%, 22%);
+  --font-size: 18px;
+}
+
+/* default setting */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "RictyDiminished", sans-serif;
+  color: var(--text-color);
+  margin: 40px 0;
+  font-size: var(--font-size);
+}
+
+
+/* common */
+
+a {
+  color: var(--color1);
+}
+
+input, select, option, textarea  {
+  font-family: "RictyDiminished";
+  font-size: var(--font-size);
+  width: 100%;
+  padding: 8px 4px;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    margin: 0 16px;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 28px;
+}
+
+.lead {
+  font-size: 14px;
+  text-align: center;
+}
+
+#setting, #result {
+  border-radius: 10px;
+  padding: 32px;
+  margin-top: 16px;
+}
+
+#setting {
+  font-family: "RictyDiminished";
+  margin-top: 40px;
+  background: var(--color3);
+}
+
+#setting table {
+  width: 100%;
+  text-align-last: left;
+}
+
+#setting table tr:nth-of-type(1) th,
+#setting table tr:nth-of-type(1) td {
+  padding-top: 0;
+}
+
+#setting table th, #setting table td{
+  padding-top: 0.5em;
+}
+
+#setting table th {
+  width: 140px;
+  font-weight: normal;
+}
+
+#setting table td {
+  width: auto;
+}
+
+#result {
+  font-family: "RictyDiminished";
+  background: var(--color3);
+}
+
+#resultContent {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+#copyButton {
+  display: block;
+  color: inherit;
+  background: var(--color2);
+  border-radius: 5px;
+  width: 200px;
+  padding: 12px 16px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  margin: 16px auto 0;
+  position: relative;
+  transition: background .3s;
+}
+
+#copyButton .text {
+  font-size: 16px;
+}
+
+#copyButton .icon {
+  vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+#copyButton.appear {
+  background: var(--color1);
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.changeMode {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -10;
+  padding: 16px 16px 0 0;
+  color: var(--color3);
+}
+
+
+.changeMode span {
+  cursor: pointer;
+}
+
+.changeMode::after {
+  content: "";
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  z-index: -25;
+  border-radius: 100% 0% 0% 100% / 0% 100% 0% 100% ;
+  background: var(--color1);
+}
