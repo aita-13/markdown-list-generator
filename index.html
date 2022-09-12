@@ -17,23 +17,24 @@
       <table>
         <tbody>
           <tr>
-            <th>List Type</th>
+            <th><label for="settingList">List Type</label></th>
             <td>
               <select id="settingList">
+                <option value="task">- [ ] Task List</option>
                 <option value="unordered">- Unordered list</option>
                 <option value="ordered">1. Ordered list</option>
-                <option value="task">- [ ] Task List</option>
               </select>
             </td>
           </tr>
           <tr>
-            <th>Number of List</th>
-            <td><input type="number" id="settingNumber" value="10" min="0" max="100"></td>
+            <th><label for="settingNumber">Number of List</label></th>
+            <td class="tdRange"><span id="rangeValue">25</span><input type="range" id="settingNumber" value="25" min="0" max="50"></td>
           </tr>
           <tr id="hiddenElement">
-            <th>Have number</th>
+            <th><label for="settingHaveNumber">Have number</label></th>
             <td>
-              <select id="settingHaveNumber" disabled="disabled">
+              <select id="settingHaveNumber">
+              <!-- <select id="settingHaveNumber" disabled="disabled"> -->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
               </select>
@@ -46,14 +47,14 @@
     
     <div id="result">
       <div id="resultContent">
-        Markdown Text
+        
       </div>
     </div>
 
-    <div id="copyButton">
+    <button id="copyButton">
       <span class="text" id="copyText">COPY</span>
       <span class="material-symbols-outlined icon" id="copyIcon">content_copy</span>
-    </div>
+    </button>
 
   </div>
   <script src="js/main.js"></script>
