@@ -12,9 +12,8 @@
   // ページを表示した際に、デフォルトの状態で結果を反映させる
   showResult();
 
-  ////////////////////////////////
+
   // settingListの入力があった時、結果を出力
-  ////////////////////////////////
   settingList.forEach(element => {
     element.addEventListener('input', () => {
 
@@ -24,7 +23,7 @@
           type = '- '
           resetOption();
           showResult();
-          document.getElementById('settingHaveNumber').removeAttribute('disabled');
+          inputDisabled();
         break;
         case 'ordered':
           type = '. ';
@@ -34,7 +33,8 @@
         break;
         case 'task':
           type = '- [ ]';
-          document.getElementById('settingHaveNumber').removeAttribute('disabled');
+          // document.getElementById('settingHaveNumber').removeAttribute('disabled');
+          document.getElementById('settingHaveNumber').disabled = false;
           resetOption();
           showResult();
         break;
@@ -43,24 +43,21 @@
     })
   });
 
-  ////////////////////////////////
+
   // setttingNumberの入力があった時、結果を出力
-  ////////////////////////////////
   settingNumber.addEventListener('input', () => {
     showResult();
   })
 
-  ////////////////////////////////
+
    // setttingNumberを変えたら、rangeValueの表示を変える
-  ////////////////////////////////
    const rangeValue = document.getElementById('rangeValue');
    settingNumber.addEventListener('input', () => {
      rangeValue.textContent = String(settingNumber.value).padStart(2, '0');
    });
   
-  ////////////////////////////////
+
   // settingHaveNumberの入力があった時、結果を出力
-  ////////////////////////////////
   settingHaveNumber.forEach(settingHaveElement => {
     settingHaveElement.addEventListener('input', () => {
       showResult();
@@ -70,12 +67,11 @@
 
   // settingHaveNumberをdisabledにする関数
   function inputDisabled() {
-    document.getElementById('settingHaveNumber').setAttribute('disabled', 'disabled');
+    document.getElementById('settingHaveNumber').disabled = true;
   }
 
-  ////////////////////////////////
+
   // ListTypeとNumberofListの値を取得して、出力させ、resultContentを下にスクロールする関数
-  ////////////////////////////////
   function showResult() {
     // NumberofListの数字が0の時、Markdwon Listと表示する
     if (settingNumber.value <= 0) {
@@ -106,7 +102,7 @@
               resultContent.appendChild(item);
               classNumber();
             } else {
-              item.textContent = `${type}`
+              item.textContent = `${type}`;
               resultContent.appendChild(item);
               classNumber();
             }
@@ -115,24 +111,29 @@
 
         // 条件分岐
         if (e.value === 'ordered') {
-          item.textContent = `${num + 1}${type}`
+          item.textContent = `${num + 1}${type}`;
           resultContent.appendChild(item);
           classNumber();
         } else {
           setNumber();
         }
 
+        if (e.value === 'unordered') {
+          item.textContent = `${type}`;
+          resultContent.appendChild(item);
+          classNumber();
+        } else {
+          // setNumber();
+        }
+
         // リストの数が増えるたび、#resultContentを下にスクロール
         const resultContentDiv = document.querySelectorAll(`.classNumber${numPad}`);
 
         resultContentDiv.forEach((resultContentDivElement) => {
-          // if (resultContentDivElement.className === `classNumber${settingNumber.value}`) {
             resultContentDivElement.scrollIntoView({
               behavior: "auto",
               block: "end"
             });
-          // } else {
-          // }
         })
 
       }) // end settingList.forEach
@@ -140,9 +141,8 @@
   } // end function showResult
 
 
-  ////////////////////////////////
+
   // ListTypeがTask以外に選択された時、HaveNumberの値をYesにリセット
-  ////////////////////////////////
 
   function resetOption() {
     settingHaveNumber.forEach(e => {
@@ -150,9 +150,8 @@
     })
   }
 
-  ////////////////////////////////
+
   // resultContentの内容をコピーする挙動
-  ////////////////////////////////
   const copyButton = document.getElementById('copyButton');
   const copyIcon = document.getElementById('copyIcon');
   const copyText = document.getElementById('copyText');
